@@ -96,12 +96,54 @@
                                     <p class="mb-0">使用我們的系統關注您追蹤的股票</p>
                                 </a>
                             </div>
-                            <div class="col mb-5 mb-md-0 h-100">
+                            <!-- <div class="col mb-5 mb-md-0 h-100">
                                 <a class="navbar-brand" href="MainPage.html" >
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
                                     <h2 class="fw-bolder mb-0">修改個人資料</h2>
                                     <p class="mb-0">修改您個人資料，方便我們了解您的資訊</p>
                                 </a>
+                            </div> -->
+                            <!-- 修改個人資料鏈接 -->
+                            <a class="navbar-brand" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
+                                <h2 class="fw-bolder mb-0">修改個人資料</h2>
+                                <p class="mb-0">修改您個人資料，方便我們了解您的資訊</p>
+                            </a>
+
+                            <!-- 修改個人資料模態框 -->
+                            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="edit_profile.php" method="post">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editProfileModalLabel">修改個人資料</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="userID" class="form-label">UserID</label>
+                                                    <input type="text" class="form-control" id="userID" name="userID" value="<?php echo htmlspecialchars($_SESSION['userID']); ?>" readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">UserName</label>
+                                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="password" class="form-label">Password</label>
+                                                    <input type="password" class="form-control" id="password" name="password">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-primary">保存變更</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
