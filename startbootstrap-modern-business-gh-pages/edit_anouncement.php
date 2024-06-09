@@ -12,23 +12,26 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$id = $_GET['id'];
-$sql = "SELECT content FROM board WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$stmt->bind_result($content);
-$stmt->fetch();
-$stmt->close();
+// 從資料庫中獲取當前的公告內容
+$sql = "SELECT content FROM board";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $content = $row['content'];
+} else {
+    $content = "";
+}
+
+// 處理表單提交
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_content = $_POST['content'];
 
-    $stmt = $conn->prepare("UPDATE board SET content = ? WHERE id = ?");
-    $stmt->bind_param("si", $new_content, $id);
+    $stmt = $conn->prepare("UPDATE board SET content = ?");
+    $stmt->bind_param("s", $new_content);
 
     if ($stmt->execute()) {
-        header("Location: main_page.php"); // 重定向到主頁面
+        header("Location: index.php"); // 重定向到主頁面
         exit();
     } else {
         echo "Error: " . $stmt->error;
