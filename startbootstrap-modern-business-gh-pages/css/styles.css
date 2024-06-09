@@ -10846,31 +10846,3 @@ html {
   background-repeat: no-repeat;
   min-height: 15rem;
 }
-
-.login-register-form {
-  display: none; /* 默認隱藏 */
-  position: absolute;
-  right: 10px;
-  top: 50px;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-.login-register-form input {
-  margin: 5px 0;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.login-register-form button {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-.login-register-form button:hover {
-  background-color: #555;
-}
