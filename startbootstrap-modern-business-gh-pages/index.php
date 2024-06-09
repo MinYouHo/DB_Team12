@@ -62,7 +62,7 @@
                                     $conn->close();
                                     ?>
                                     <?php if(isset($_SESSION['permission']) && $_SESSION['permission']): ?>
-                                        <a class="stretched-link text-decoration-none" href="#!">
+                                        <a class="stretched-link text-decoration-none" href="edit_anouncement.php">
                                             修改
                                             <i class="bi bi-arrow-right"></i>
                                         </a>
