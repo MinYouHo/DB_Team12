@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                         <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
                             <!-- If user is logged in, show logout link -->
-                            <li><label class="dropdown-item">Hi~ <?php echo $_SESSION['username'] ?></label></li>
+                            <li><a class="dropdown-item" href="logout.php">Hi~ <?php echo $_SESSION['userID'] ?></a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         <?php else: ?>
                             <!-- 登入&註冊表單 -->
