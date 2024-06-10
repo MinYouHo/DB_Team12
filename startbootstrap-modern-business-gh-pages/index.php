@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php session_start();
+if (isset($_SESSION['message'])) {
+    echo "<p>" . $_SESSION['message'] . "</p>";
+    unset($_SESSION['message']); // 顯示消息後清除他
+} ?>
 <?php require 'config.php'; ?>
 <html lang="en">
 <head>

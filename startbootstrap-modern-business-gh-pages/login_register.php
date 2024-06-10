@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['userID'] = $fetchedUserID;
                 $_SESSION['username'] = $fetchedUserName;
                 $_SESSION['permission'] = $permission;
+                $_SESSION['message'] = "Login successful."; // 添加成功消息
 
                 header("Location: " . $_SERVER['HTTP_REFERER']);
                 exit;
