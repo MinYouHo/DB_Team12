@@ -22,12 +22,17 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                         <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
                             <!-- If user is logged in, show logout link -->
+<<<<<<< HEAD
                             <li><label class="dropdown-item">Hi~ <?php echo $_SESSION['username'] ?></label></li>
+=======
+                            <li><a class="dropdown-item" href="logout.php">Hi~ <?php echo $_SESSION['userID'] ?></a></li>
+>>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         <?php else: ?>
                             <!-- 登入&註冊表單 -->
                             <div class="login-register-form" id="login-register-form">
                                 <form action="login_register.php" method="post">
+<<<<<<< HEAD
                                     <label for="userID">UserID:</label>
                                     <input type="text" id="userID" name="userID" required>
                                     <label for="username">UserName:</label>
@@ -35,6 +40,15 @@
                                     <label for="password">Password:</label>
                                     <input type="password" id="password" name="password" required>
                                     <label for="email">Email:</label>
+=======
+                                    <label for="userID">UserID*</label>
+                                    <input type="text" id="userID" name="userID" required>
+                                    <label for="password">Password*</label>
+                                    <input type="password" id="password" name="password" required>
+                                    <label for="username">UserName(註冊用)</label>
+                                    <input type="text" id="username" name="username">
+                                    <label for="email">Email(註冊用)</label>
+>>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                                     <input type="text" id="email" name="email">
                                     <button type="submit" name="action" value="login">登入</button>
                                     <button type="submit" name="action" value="register">註冊</button>
