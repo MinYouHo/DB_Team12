@@ -31,14 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($stmt->execute()) {
-        echo "個人資料更新成功！3秒後自動回到主頁";
+        // 更新 session 中的用戶信息
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
+
+        echo "<div style='text-align: center; margin-top: 20px;'>
+                <h2>個人資料更新成功！</h2>
+                <p>3秒後重定向到首頁...</p>
+              </div>";
         echo "<script>
                 setTimeout(function() {
                     window.location.href = 'index.php';
                 }, 3000);
               </script>";
     } else {
-        echo "更新失敗: " . $stmt->error;
+        echo "<div style='text-align: center; margin-top: 20px;'>
+                <h2>更新失敗: " . $stmt->error . "</h2>
+              </div>";
     }
 
     $stmt->close();
