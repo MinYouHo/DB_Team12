@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
-<?php require 'config.php'; ?>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,23 +44,9 @@
                                 <div class="p-4 p-md-5">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2">最新</div>
                                     <div class="h2 fw-bolder">管理員公告</div>
-                                    <?php
-                                    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-                                    $sql = "SELECT content FROM board";
-                                    $result = $conn->query($sql);
-                
-                                    if ($result->num_rows > 0) {
-                                        // 輸出每一行的數據
-                                        while($row = $result->fetch_assoc()) {
-                                            echo "" . $row["content"]. "<br>";
-                                        }
-                                    } else {
-                                        echo "0 results";
-                                    }
-                                    $conn->close();
-                                    ?>
-                                    <?php if(isset($_SESSION['permission']) && $_SESSION['permission']): ?>
-                                        <a class="stretched-link text-decoration-none" href="edit_anouncement.php">
+                                    <p>投資一定有風險，基金投資有賺有賠，申購前應詳閱公開說明書。</p>
+                                    <?php if ($user_permission == 1): ?>
+                                        <a class="stretched-link text-decoration-none" href="#!">
                                             修改
                                             <i class="bi bi-arrow-right"></i>
                                         </a>
