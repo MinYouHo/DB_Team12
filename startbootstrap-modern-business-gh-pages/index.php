@@ -83,7 +83,7 @@
                     <div class="col-lg-8">
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
                             <div class="col mb-5 h-100">
-                                <a class="navbar-brand" href="MainPage.html" >
+                                <a class="navbar-brand" href="search.php" >
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-search"></i></div>
                                     <h2 class="fw-bolder mb-0">搜尋股票</h2>
                                     <p class="mb-0">使用我們的系統快速找尋到您想要股票資料</p>
