@@ -90,7 +90,7 @@
                                 </a>
                             </div>
                             <div class="col mb-5 h-100">
-                                <a class="navbar-brand" href="MainPage.html" >
+                                <a class="navbar-brand" href="follow_company.php" >
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                                     <h2 class="fw-bolder mb-0">個人追蹤清單</h2>
                                     <p class="mb-0">使用我們的系統關注您追蹤的股票</p>
