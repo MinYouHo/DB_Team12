@@ -28,13 +28,13 @@
                             <!-- 登入&註冊表單 -->
                             <div class="login-register-form" id="login-register-form">
                                 <form action="login_register.php" method="post">
-                                    <label for="userID">UserID:</label>
+                                    <label for="userID">UserID*</label>
                                     <input type="text" id="userID" name="userID" required>
-                                    <label for="username">UserName:</label>
-                                    <input type="text" id="username" name="username" required>
-                                    <label for="password">Password:</label>
+                                    <label for="password">Password*</label>
                                     <input type="password" id="password" name="password" required>
-                                    <label for="email">Email:</label>
+                                    <label for="username">UserName(註冊用)</label>
+                                    <input type="text" id="username" name="username">
+                                    <label for="email">Email(註冊用)</label>
                                     <input type="text" id="email" name="email">
                                     <button type="submit" name="action" value="login">登入</button>
                                     <button type="submit" name="action" value="register">註冊</button>
