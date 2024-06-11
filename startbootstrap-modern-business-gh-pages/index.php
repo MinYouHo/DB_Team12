@@ -96,13 +96,6 @@
                                     <p class="mb-0">使用我們的系統關注您追蹤的股票</p>
                                 </a>
                             </div>
-                            <!-- <div class="col mb-5 mb-md-0 h-100">
-                                <a class="navbar-brand" href="MainPage.html" >
-                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
-                                    <h2 class="fw-bolder mb-0">修改個人資料</h2>
-                                    <p class="mb-0">修改您個人資料，方便我們了解您的資訊</p>
-                                </a>
-                            </div> -->
                             <!-- 修改個人資料鏈接 -->
                             <a class="navbar-brand" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
