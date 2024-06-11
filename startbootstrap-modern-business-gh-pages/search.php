@@ -23,23 +23,107 @@
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
-                    <h1 class="fw-bolder">Search Your Stock</h1>
+                    <h1 class="fw-bolder">訂定篩選條件，我們會為您找出符合的公司</h1>
                     <div class="container">
-                        <form id="stock-search-form" method="POST">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="stockCode" name="stockCode" placeholder="股票代號">
-                                <label for="stockCode">股票代號</label>
+                    <form id="stock-search-form" method="POST">
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="stockCode" name="stockCode" placeholder="股票代號" value="<?php echo isset($_POST['stockCode']) ? $_POST['stockCode'] : ''; ?>">
+                                    <label for="stockCode">股票代號 ID</label>
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="公司名稱或產業">
-                                <label for="companyName">公司名稱或產業</label>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="companyName" name="companyName" placeholder="公司名稱" value="<?php echo isset($_POST['companyName']) ? $_POST['companyName'] : ''; ?>">
+                                    <label for="companyName">公司名稱 Name</label>
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="quarter" name="quarter" placeholder="季度">
-                                <label for="quarter">季度</label>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="industry" name="industry" placeholder="產業" value="<?php echo isset($_POST['industry']) ? $_POST['industry'] : ''; ?>">
+                                    <label for="industry">產業 Industry</label>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">搜尋</button>
-                        </form>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="quarter" name="quarter" placeholder="季度" value="<?php echo isset($_POST['quarter']) ? $_POST['quarter'] : ''; ?>">
+                                    <label for="quarter">季度 Quarter</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="marketValueMin" name="marketValueMin" placeholder="最低市場價值" value="<?php echo isset($_POST['marketValueMin']) ? $_POST['marketValueMin'] : ''; ?>">
+                                    <label for="marketValueMin">最低市值 Min MarketValue</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="marketValueMax" name="marketValueMax" placeholder="最高市場價值" value="<?php echo isset($_POST['marketValueMax']) ? $_POST['marketValueMax'] : ''; ?>">
+                                    <label for="marketValueMax">最高市值 Max MarketValue</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="dividendMin" name="dividendMin" placeholder="最低股息" value="<?php echo isset($_POST['dividendMin']) ? $_POST['dividendMin'] : ''; ?>">
+                                    <label for="dividendMin">最低股息 Min Dividend</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="dividendMax" name="dividendMax" placeholder="最高股息" value="<?php echo isset($_POST['dividendMax']) ? $_POST['dividendMax'] : ''; ?>">
+                                    <label for="dividendMax">最高股息 Max Dividend</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="epsMin" name="epsMin" placeholder="最低每股盈餘" value="<?php echo isset($_POST['epsMin']) ? $_POST['epsMin'] : ''; ?>">
+                                    <label for="epsMin">最低每股盈餘 Min EPS</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="epsMax" name="epsMax" placeholder="最高每股盈餘" value="<?php echo isset($_POST['epsMax']) ? $_POST['epsMax'] : ''; ?>">
+                                    <label for="epsMax">最高每股盈餘 Max EPS</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="bvpsMin" name="bvpsMin" placeholder="最低每股淨值" value="<?php echo isset($_POST['bvpsMin']) ? $_POST['bvpsMin'] : ''; ?>">
+                                    <label for="bvpsMin">最低每股淨值 Min BVPS</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" step="0.01" class="form-control" id="bvpsMax" name="bvpsMax" placeholder="最高每股淨值" value="<?php echo isset($_POST['bvpsMax']) ? $_POST['bvpsMax'] : ''; ?>">
+                                    <label for="bvpsMax">最高每股淨值 Max BVPS</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="saleMin" name="saleMin" placeholder="最低銷售額" value="<?php echo isset($_POST['saleMin']) ? $_POST['saleMin'] : ''; ?>">
+                                    <label for="saleMin">最低銷售額 Min Sale</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="saleMax" name="saleMax" placeholder="最高銷售額" value="<?php echo isset($_POST['saleMax']) ? $_POST['saleMax'] : ''; ?>">
+                                    <label for="saleMax">最高銷售額 Max Sale</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="justify-content-center">
+                                <button type="submit" class="btn btn-primary" style="height: 60px; font-size: 32px; width: 400px;">點 此 進 行 搜 尋</button>
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -48,22 +132,97 @@
         <div class="container px-5 my-5">
             <div id="result">
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                session_start();
+                $userID = $_SESSION['userID'];
+
+                if (isset($_POST['followCompanyID'])) {
+                    $companyID = $_POST['followCompanyID'];
+
+                    // Insert into follow table
+                    $followQuery = "INSERT INTO follow (UserID, CompanyID) VALUES ('$userID', '$companyID')";
+
+                    if ($conn->query($followQuery) === TRUE) {
+                        echo "<script>alert('Company followed successfully!');</script>";
+                    } else {
+                        echo "<script>alert('Error: " . $conn->error . "');</script>";
+                    }
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['followCompanyID'])) {
                     $stockCode = $_POST['stockCode'];
                     $companyName = $_POST['companyName'];
+                    $industry = $_POST['industry'];
                     $quarter = $_POST['quarter'];
+                    $marketValueMin = $_POST['marketValueMin'];
+                    $marketValueMax = $_POST['marketValueMax'];
+                    $dividendMin = $_POST['dividendMin'];
+                    $dividendMax = $_POST['dividendMax'];
+                    $epsMin = $_POST['epsMin'];
+                    $epsMax = $_POST['epsMax'];
+                    $bvpsMin = $_POST['bvpsMin'];
+                    $bvpsMax = $_POST['bvpsMax'];
+                    $saleMin = $_POST['saleMin'];
+                    $saleMax = $_POST['saleMax'];
 
-                    $query = '';
+                    $query = "
+                        SELECT 
+                            Company.CompanyID, 
+                            Company.CompanyName, 
+                            Company.Industry, 
+                            Quarter.Quarter, 
+                            Quarter.MarketValue, 
+                            Quarter.Dividend, 
+                            Quarter.EPS, 
+                            Quarter.BVPS, 
+                            Quarter.Sale 
+                        FROM 
+                            Company 
+                        LEFT JOIN 
+                            Quarter 
+                        ON 
+                            Company.CompanyID = Quarter.CompanyID 
+                        WHERE 1=1";
 
-                    if ($stockCode && $quarter) {
-                        $query = "SELECT Quarter.CompanyID, Quarter.Quarter, Quarter.MarketValue, Quarter.Dividend, Quarter.EPS, Quarter.BVPS, Quarter.Sale FROM Quarter WHERE Quarter.CompanyID = '$stockCode' AND Quarter.Quarter = '$quarter'";
-                    } elseif ($stockCode) {
-                        $query = "SELECT Quarter.CompanyID, Quarter.Quarter, Quarter.MarketValue, Quarter.Dividend, Quarter.EPS, Quarter.BVPS, Quarter.Sale FROM Quarter WHERE Quarter.CompanyID = '$stockCode'";
-                    } elseif ($companyName) {
-                        $query = "SELECT Company.CompanyID, Company.CompanyName, Company.Industry, Quarter.Quarter, Quarter.MarketValue, Quarter.Dividend, Quarter.EPS, Quarter.BVPS, Quarter.Sale FROM Company LEFT JOIN Quarter ON Company.CompanyID = Quarter.CompanyID WHERE Company.CompanyName = '$companyName' OR Company.Industry = '$companyName'";
-                    } else {
-                        echo '<p>請輸入搜尋條件</p>';
-                        return;
+                    if ($stockCode) {
+                        $query .= " AND Company.CompanyID = '$stockCode'";
+                    }
+                    if ($quarter) {
+                        $query .= " AND Quarter.Quarter = '$quarter'";
+                    }
+                    if ($companyName) {
+                        $query .= " AND Company.CompanyName LIKE '%$companyName%'";
+                    }
+                    if ($industry) {
+                        $query .= " AND Company.Industry LIKE '%$industry%'";
+                    }
+                    if ($marketValueMin) {
+                        $query .= " AND Quarter.MarketValue >= $marketValueMin";
+                    }
+                    if ($marketValueMax) {
+                        $query .= " AND Quarter.MarketValue <= $marketValueMax";
+                    }
+                    if ($dividendMin) {
+                        $query .= " AND Quarter.Dividend >= $dividendMin";
+                    }
+                    if ($dividendMax) {
+                        $query .= " AND Quarter.Dividend <= $dividendMax";
+                    }
+                    if ($epsMin) {
+                        $query .= " AND Quarter.EPS >= $epsMin";
+                    }
+                    if ($epsMax) {
+                        $query .= " AND Quarter.EPS <= $epsMax";
+                    }
+                    if ($bvpsMin) {
+                        $query .= " AND Quarter.BVPS >= $bvpsMin";
+                    }
+                    if ($bvpsMax) {
+                        $query .= " AND Quarter.BVPS <= $bvpsMax";
+                    }
+                    if ($saleMin) {
+                        $query .= " AND Quarter.Sale >= $saleMin";
+                    }
+                    if ($saleMax) {
+                        $query .= " AND Quarter.Sale <= $saleMax";
                     }
 
                     $result = $conn->query($query);
@@ -75,13 +234,15 @@
                         foreach ($fields as $field) {
                             echo '<th>' . $field->name . '</th>';
                         }
+                        echo '<th>Action</th>';
                         echo '</tr></thead>';
                         echo '<tbody>';
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr>';
-                            foreach ($row as $value) {
+                            foreach ($row as $key => $value) {
                                 echo '<td>' . $value . '</td>';
                             }
+                            echo '<td><button type="button" class="btn btn-danger follow-button" data-companyid="' . $row['CompanyID'] . '"><i class="bi bi-heart"></i></button></td>';
                             echo '</tr>';
                         }
                         echo '</tbody></table>';
@@ -113,5 +274,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var followButtons = document.querySelectorAll('.follow-button');
+            followButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var companyID = this.getAttribute('data-companyid');
+                    var formData = new FormData();
+                    formData.append('followCompanyID', companyID);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '', true);
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            alert('Company followed successfully!');
+                        } else {
+                            alert('Error following company.');
+                        }
+                    };
+                    xhr.send(formData);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
