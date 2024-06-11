@@ -83,29 +83,19 @@
                     <div class="col-lg-8">
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
                             <div class="col mb-5 h-100">
-<<<<<<< HEAD
-                                <a class="navbar-brand" href="MainPage.html" >
-=======
                                 <a class="navbar-brand" href="search.php" >
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-search"></i></div>
                                     <h2 class="fw-bolder mb-0">搜尋股票</h2>
                                     <p class="mb-0">使用我們的系統快速找尋到您想要股票資料</p>
                                 </a>
                             </div>
                             <div class="col mb-5 h-100">
-<<<<<<< HEAD
-                                <a class="navbar-brand" href="MainPage.html" >
-=======
                                 <a class="navbar-brand" href="follow_company.php" >
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                                     <h2 class="fw-bolder mb-0">個人追蹤清單</h2>
                                     <p class="mb-0">使用我們的系統關注您追蹤的股票</p>
                                 </a>
                             </div>
-<<<<<<< HEAD
-=======
                             <!-- <div class="col mb-5 mb-md-0 h-100">
                                 <a class="navbar-brand" href="MainPage.html" >
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
@@ -113,7 +103,6 @@
                                     <p class="mb-0">修改您個人資料，方便我們了解您的資訊</p>
                                 </a>
                             </div> -->
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                             <!-- 修改個人資料鏈接 -->
                             <a class="navbar-brand" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i></div>
@@ -137,19 +126,11 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">UserName</label>
-<<<<<<< HEAD
                                                     <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Email</label>
                                                     <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>">
-=======
-                                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Password</label>
@@ -164,7 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
 
                             <?php if(isset($_SESSION['permission']) && $_SESSION['permission']): ?>
                                 <div class="col mb-5 h-100">
@@ -253,8 +233,6 @@
                                 </div>
                             </div>
 
-=======
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                         </div>
                     </div>
                 </div>
@@ -291,7 +269,6 @@
             </div>
         </div>
     </footer>
-<<<<<<< HEAD
 
     <script>
     function validateQuarter() {
@@ -307,8 +284,6 @@
     }
     </script>
 
-=======
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

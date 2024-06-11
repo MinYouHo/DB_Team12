@@ -17,31 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($action == 'login') {
         // 處理登入邏輯
-<<<<<<< HEAD
         $stmt = $conn->prepare("SELECT UserID, Password, UserName, Email, Permission FROM User WHERE UserID = ?");
-=======
-        $stmt = $conn->prepare("SELECT UserID, Password, UserName, Permission FROM User WHERE UserID = ?");
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
         $stmt->bind_param("s", $userID);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-<<<<<<< HEAD
             $stmt->bind_result($fetchedUserID, $storedPassword, $fetchedUserName, $fetchedEmail, $permission);
-=======
-            $stmt->bind_result($fetchedUserID, $storedPassword, $fetchedUserName, $permission);
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
             $stmt->fetch();
 
             if ($password === $storedPassword) { // 密碼驗證
                 $_SESSION['loggedin'] = true;
                 $_SESSION['userID'] = $fetchedUserID;
                 $_SESSION['username'] = $fetchedUserName;
-<<<<<<< HEAD
                 $_SESSION['email'] = $fetchedEmail;
-=======
->>>>>>> cdd42393d36a3813aaa33fc83c7a60aaaa4947e8
                 $_SESSION['permission'] = $permission;
 
                 header("Location: " . $_SERVER['HTTP_REFERER']);
