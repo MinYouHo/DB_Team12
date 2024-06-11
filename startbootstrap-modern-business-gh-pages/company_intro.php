@@ -26,15 +26,18 @@
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2">公司資訊</h1>
-                                <?php if(isset($_SESSION['CompanyID']) && $_SESSION['CompanyID']): ?>
-                                <h1 class="display-5 fw-bolder text-white mb-2">宏達</h1>
+                                <?php $companyID = htmlspecialchars($_GET['CompanyID']);?>
+                                <?php $companyName = htmlspecialchars($_GET['CompanyName']);?>
+                                <?php $Industry = htmlspecialchars($_GET['Industry']);?>
+                                <?php if(isset($companyID) &&$companyID): ?>
+                                    <h1 class="display-5 fw-bolder text-white mb-2"><?php echo htmlspecialchars($companyName); ?></h1>
                                 <?php else: ?>
                                 <h1 class="display-5 fw-bolder text-white mb-2">查詢錯誤</h1>
                                 <?php endif; ?>
                                 <p class="lead fw-normal text-white-50 mb-4">讓您更快了解公司營運狀況</p>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/company.jpg" alt="..." /></div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/<?php echo htmlspecialchars($Industry); ?>.jpg" alt="..." /></div>
                     </div>
                 </div>
             </header>

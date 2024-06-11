@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,7 +38,7 @@
                                     <?php foreach ($_SESSION['followed_companies'] as $company): ?>
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <?php $myindustries = ['wood', 'Technology', 'Healthcare', 'Finance', 'Education', 'Agriculture']; ?>
+                                                <?php $myindustries = ['Utilities', 'Telecommunications', 'Technology', 'Real_Estate', 'Industrials', 'Healthcare','Financial_Services','Energy','Consumer_Staples','Consumer_Discretiona']; ?>
                                                 <?php if (in_array($company['Industry'], $myindustries)): ?>
                                                     <img class="rounded-circle" src="assets/<?php echo htmlspecialchars($company['Industry']); ?>.jpg" alt="..." style="width: 50px; height: 50px;" />
                                                 <?php else:?>
@@ -45,19 +46,23 @@
                                                 <?php endif;?>
                                             </div>
                                             <div class="ms-3">
-                                                <li>
-                                                    <span style="font-weight: bold; font-family: Arial, Helvetica, sans-serif;">公司名稱: <?php echo htmlspecialchars($company['CompanyName']); ?> </span>
-                                                    <span style="font-weight: bold; font-family: Arial, Helvetica, sans-serif;">公司ID: <?php echo htmlspecialchars($company['CompanyID']); ?> </span>
-                                                    <span style="font-weight: bold; font-family: Arial, Helvetica, sans-serif;">行業: <?php echo htmlspecialchars($company['Industry']); ?> </span>
+                                            <li>
+                                            <a href="company_intro.php?CompanyID=<?php echo urlencode($company['CompanyID']); ?>&CompanyName=<?php echo urlencode($company['CompanyName']); ?>&Industry=<?php echo urlencode($company['Industry']); ?>" style="color: black; text-decoration: none;">
+                                                公司名稱: <?php echo htmlspecialchars($company['CompanyName']); ?>
+                                            </a>
+                                            <a href="company_intro.php?CompanyID=<?php echo urlencode($company['CompanyID']); ?>&CompanyName=<?php echo urlencode($company['CompanyName']); ?>&Industry=<?php echo urlencode($company['Industry']); ?>" style="color: black; text-decoration: none;"> 
+                                                    公司ID: <?php echo htmlspecialchars($company['CompanyID']); ?>
+                                                </a>
+                                                <a href="company_intro.php?CompanyID=<?php echo urlencode($company['CompanyID']); ?>&CompanyName=<?php echo urlencode($company['CompanyName']); ?>&Industry=<?php echo urlencode($company['Industry']); ?>" style="color: black; text-decoration: none;">
+                                                    行業: <?php echo htmlspecialchars($company['Industry']); ?>
+                                                </a>
                                                 <button type="button" class="btn btn-danger btn-sm ms-2" onclick="deleteCompany('<?php echo htmlspecialchars($company['CompanyID']); ?>')">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
-                                                <br>
-                                                </br>
-                                                <br>
-                                                </br>
-                                                
-                                                </li>
+                                            </li>
+                                            <br>
+                                            </br>
+                                            
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
@@ -95,8 +100,18 @@
 <script>
 function deleteCompany(companyID) {
     if (confirm('確定要刪除這個公司嗎？')) {
-
-         console.log('刪除公司ID:', companyID);
+        // 使用 AJAX 發送刪除請求
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "delete_company.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 請求完成後的動作
+                alert('公司已刪除');
+                location.reload(); // 刷新頁面以反映刪除
+            }
+        };
+        xhr.send("companyID=" + companyID);
     }
 }
 </script>
