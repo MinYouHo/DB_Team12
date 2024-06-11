@@ -126,11 +126,11 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">UserName</label>
-                                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>">
+                                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+                                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Password</label>
@@ -145,6 +145,94 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <?php if(isset($_SESSION['permission']) && $_SESSION['permission']): ?>
+                                <div class="col mb-5 h-100">
+                                    <a class="navbar-brand" href="#" data-bs-toggle="modal" data-bs-target="#uploadCompanyModal">
+                                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-upload"></i></div>
+                                        <h2 class="fw-bolder mb-0">上傳公司資料</h2>
+                                        <p class="mb-0">建立最新的公司財務資料讓使用者搜尋使用</p>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                            <!-- 上傳公司資料模態框 -->
+                            <div class="modal fade" id="uploadCompanyModal" tabindex="-1" aria-labelledby="uploadCompanyModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="upload_company.php" method="post">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="uploadCompanyModalLabel">上傳公司資料</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="CompanyID" class="form-label">CompanyID 僅限數字</label>
+                                                    <input type="text" class="form-control" id="CompanyID" name="CompanyID" pattern="\d+" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 CompanyID。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="CompanyName" class="form-label">CompanyName 若與Industry皆為空 視為僅新增Quarter資料</label>
+                                                    <input type="text" class="form-control" id="CompanyName" name="CompanyName">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Industry" class="form-label">Industry 若與CompanyName皆為空 視為僅新增Quarter資料</label>
+                                                    <input type="text" class="form-control" id="Industry" name="Industry">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Quarter" class="form-label">Quarter 輸入格式："YYYY-QN"，例如："2023-Q2"</label>
+                                                    <input type="text" class="form-control" id="Quarter" name="Quarter" pattern="\d{4}-Q[1-4]" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入格式為 "YYYY-QN" 的季度資料，例如 "2023-Q2"。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="MarketValue" class="form-label">MarketValue 僅限數字</label>
+                                                    <input type="text" class="form-control" id="MarketValue" name="MarketValue" pattern="\d+(\.\d{1,2})?" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 MarketValue。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Dividend" class="form-label">Dividend 僅限數字</label>
+                                                    <input type="text" class="form-control" id="Dividend" name="Dividend" pattern="\d+(\.\d{1,2})?" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 Dividend。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="EPS" class="form-label">EPS 僅限數字</label>
+                                                    <input type="text" class="form-control" id="EPS" name="EPS" pattern="\d+(\.\d{1,2})?" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 EPS。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="BVPS" class="form-label">BVPS 僅限數字</label>
+                                                    <input type="text" class="form-control" id="BVPS" name="BVPS" pattern="\d+(\.\d{1,2})?" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 BVPS。
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="Sale" class="form-label">Sale 僅限數字</label>
+                                                    <input type="text" class="form-control" id="Sale" name="Sale" pattern="\d+(\.\d{1,2})?" required>
+                                                    <div class="invalid-feedback">
+                                                        請輸入數字形式的 Sale。
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-primary">保存資料</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -181,6 +269,21 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    function validateQuarter() {
+        const quarterInput = document.getElementById('Quarter');
+        const quarterPattern = /^\d{4}-Q[1-4]$/;
+        if (!quarterPattern.test(quarterInput.value)) {
+            quarterInput.setCustomValidity('請輸入格式為 "YYYY-QN" 的季度資料，例如 "2023-Q2".');
+            return false;
+        } else {
+            quarterInput.setCustomValidity('');
+            return true;
+        }
+    }
+    </script>
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

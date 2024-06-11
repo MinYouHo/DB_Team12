@@ -17,19 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($action == 'login') {
         // 處理登入邏輯
-        $stmt = $conn->prepare("SELECT UserID, Password, UserName, Permission FROM User WHERE UserID = ?");
+        $stmt = $conn->prepare("SELECT UserID, Password, UserName, Email, Permission FROM User WHERE UserID = ?");
         $stmt->bind_param("s", $userID);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($fetchedUserID, $storedPassword, $fetchedUserName, $permission);
+            $stmt->bind_result($fetchedUserID, $storedPassword, $fetchedUserName, $fetchedEmail, $permission);
             $stmt->fetch();
 
             if ($password === $storedPassword) { // 密碼驗證
                 $_SESSION['loggedin'] = true;
                 $_SESSION['userID'] = $fetchedUserID;
                 $_SESSION['username'] = $fetchedUserName;
+                $_SESSION['email'] = $fetchedEmail;
                 $_SESSION['permission'] = $permission;
 
                 header("Location: " . $_SERVER['HTTP_REFERER']);
