@@ -132,7 +132,22 @@
         <div class="container px-5 my-5">
             <div id="result">
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                session_start();
+                $userID = $_SESSION['userID'];
+
+                if (isset($_POST['followCompanyID'])) {
+                    $companyID = $_POST['followCompanyID'];
+
+                    // Insert into follow table
+                    $followQuery = "INSERT INTO follow (UserID, CompanyID) VALUES ('$userID', '$companyID')";
+
+                    if ($conn->query($followQuery) === TRUE) {
+                        echo "<script>alert('Company followed successfully!');</script>";
+                    } else {
+                        echo "<script>alert('Error: " . $conn->error . "');</script>";
+                    }
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['followCompanyID'])) {
                     $stockCode = $_POST['stockCode'];
                     $companyName = $_POST['companyName'];
                     $industry = $_POST['industry'];
@@ -219,13 +234,15 @@
                         foreach ($fields as $field) {
                             echo '<th>' . $field->name . '</th>';
                         }
+                        echo '<th>Action</th>';
                         echo '</tr></thead>';
                         echo '<tbody>';
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr>';
-                            foreach ($row as $value) {
+                            foreach ($row as $key => $value) {
                                 echo '<td>' . $value . '</td>';
                             }
+                            echo '<td><button type="button" class="btn btn-danger follow-button" data-companyid="' . $row['CompanyID'] . '"><i class="bi bi-heart"></i></button></td>';
                             echo '</tr>';
                         }
                         echo '</tbody></table>';
@@ -257,5 +274,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var followButtons = document.querySelectorAll('.follow-button');
+            followButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var companyID = this.getAttribute('data-companyid');
+                    var formData = new FormData();
+                    formData.append('followCompanyID', companyID);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '', true);
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            alert('Company followed successfully!');
+                        } else {
+                            alert('Error following company.');
+                        }
+                    };
+                    xhr.send(formData);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
