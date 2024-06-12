@@ -112,11 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             setTimeout(function() {
                 document.getElementById('messageBox').style.display = 'none';
             }, 1000);
-            <?php if ($message === 'Login successful' || $message === 'Registration successful. Please login.'): ?>
+            
             setTimeout(function() {
                 window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
             }, 1000); /* 延長重定向時間以確保訊息完整顯示 */
-            <?php endif; ?>
+    
         </script>
     <?php endif; ?>
 </body>
