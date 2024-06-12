@@ -35,16 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['email'] = $fetchedEmail;
                 $_SESSION['permission'] = $permission;
 
-        //         header("Location: " . $_SERVER['HTTP_REFERER']);
-        //         exit;
-        //     } else {
-        //         echo "Invalid password.";
-        //     }
-        // } else {
-        //     echo "No user found with that UserID.";
-        // }
                 $message = "Login successful"; // 設置成功訊息
-                echo "<script>setTimeout(function() { window.location.href = '".$_SERVER['HTTP_REFERER']."'; }, 5000);</script>";
             } else {
                 $message = "Invalid password"; // 設置失敗訊息
             }
@@ -66,37 +57,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $permission = 0; // 默認權限
             $stmt->bind_param("ssssi", $userID, $username, $password, $email, $permission);
 
-    //         if ($stmt->execute()) {
-    //             echo "Registration successful. Please login.";
-    //         } else {
-    //             echo "Error: " . $stmt->error;
-    //         }
-    //         $stmt->close();
-    //     } else {
-    //         echo "UserID already taken.";
-    //     }
-    // }
             if ($stmt->execute()) {
                 $message = "Registration successful. Please login."; // 註冊成功訊息
-            } 
-            else {
+            } else {
                 $message = "Error: " . $stmt->error; // 註冊失敗訊息
             }
             $stmt->close();
-        } 
-        else {
+        } else {
             $message = "UserID already taken."; // 用戶名已被使用
         }
     }
 
-        $stmt->close();
-} 
-else {
-    $message = "UserID already taken."; // 用戶名已被使用
+    $conn->close();
 }
-
-$conn->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -138,12 +111,13 @@ $conn->close();
             document.getElementById('messageBox').style.display = 'block';
             setTimeout(function() {
                 document.getElementById('messageBox').style.display = 'none';
-                <?php if ($message === 'Login successful' || $message === 'Registration successful. Please login.'): ?>
-                window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>"; /* @ 重定向用戶 */
-                <?php endif; ?>
-            }, 5000); /* @ 調整時間為5秒 */
+            }, 1000);
+            <?php if ($message === 'Login successful' || $message === 'Registration successful. Please login.'): ?>
+            setTimeout(function() {
+                window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
+            }, 1000); /* 延長重定向時間以確保訊息完整顯示 */
+            <?php endif; ?>
         </script>
-
     <?php endif; ?>
 </body>
 </html>
