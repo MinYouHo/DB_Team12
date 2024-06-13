@@ -58,19 +58,34 @@ CREATE TABLE IF NOT EXISTS `Quarter` (
     FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID)
 );
 
--- 分別欄位從其他指定table匯入
+-- 創建 buystock 表
 CREATE TABLE IF NOT EXISTS `buystock` (
-    userid VARCHAR(20),
-    amount DECIMAL(15, 2) DEFAULT 1000000.00,
-    companyid VARCHAR(20),
-    price DECIMAL(15, 2),
-    transaction_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    transtype INT DEFAULT 1,
-    PRIMARY KEY (userid, companyid, transaction_time),
-    FOREIGN KEY (userid) REFERENCES User(UserID),
-    FOREIGN KEY (companyid) REFERENCES Company(CompanyID)
+    `userid` VARCHAR(20),
+    `bankroll` DECIMAL(15, 2) DEFAULT 1000000.00,
+    `companyid` VARCHAR(20),
+    `price` DECIMAL(15, 2),
+    `transaction_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `transtype` INT DEFAULT 1,
+    `quantity` INT DEFAULT 0,
+    PRIMARY KEY (`userid`, `companyid`, `transaction_time`),
+    FOREIGN KEY (`userid`) REFERENCES `user`(`UserID`),
+    FOREIGN KEY (`companyid`) REFERENCES `company`(`CompanyID`)
 );
--- INSERT
+
+-- 導入數據到 buystock 表
+INSERT IGNORE INTO buystock (`userid`, `companyid`, `price`, `transaction_time`, `quantity`)
+SELECT 
+    u.UserID, 
+    s.CompanyID, 
+    s.Price, 
+    NOW() AS transaction_time,
+    0 AS quantity
+FROM user u
+CROSS JOIN stock s;
+
+
+
+
 INSERT INTO User (UserID, UserName, Password, Email, Phone, Birth, Permission) VALUES
 ('user001','Emily Johnson','passemily','johnson@gmail.com','0974-868-375','1993/10/4',0),
 ('user002','Michael Smith','passmichael','smith@gmail.com','0977-518-193','1979/6/14',0),

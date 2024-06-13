@@ -232,90 +232,91 @@
             </div>
             <!-- 買賣股票按鈕 -->
             <div class="col mb-5 h-100">
-                <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#buySellModal">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-cash"></i></div>
-                    <h2 class="fw-bolder mb-0">買賣股票</h2>
-                    <p class="mb-0">買進或賣出股票</p>
-                </a>
-            </div>
-            <!-- 買賣股票模態框 -->
-            <div class="modal fade" id="buySellModal" tabindex="-1" aria-labelledby="buySellModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="buySellModalLabel">買賣股票</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="buy_sell_stock.php" method="post">
-                                <div class="mb-3">
-                                    <label for="stockCode" class="form-label">股票代號</label>
-                                    <input type="text" class="form-control" id="stockCode" name="stockCode" required>
-                                </div>
-                                    <div class="mb-3">
-                                        <label for="price" class="form-label">股價</label>
-                                        <input type="number" class="form-control" id="price" name="price" required>
-                                </div>
-                                    <div class="mb-3">
-                                        <label for="quantity" class="form-label">張數</label>
-                                        <input type="number" class="form-control" id="quantity" name="quantity" required>
-                                    </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="buy" name="action" value="buy">
-                                    <label class="form-check-label" for="buy">買進</label>
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="sell" name="action" value="sell">
-                                    <label class="form-check-label" for="sell">賣出</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">確認</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-<div class="col mb-5 h-100">
-    <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#transactionModal">
-        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-journal-check"></i></div>
-        <h2 class="fw-bolder mb-0">交易回報</h2>
-        <p class="mb-0">查看交易記錄</p>
+    <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#buySellModal">
+        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-cash"></i></div>
+        <h2 class="fw-bolder mb-0">買賣股票</h2>
+        <p class="mb-0">買進或賣出股票</p>
     </a>
 </div>
-<!-- 交易回報模態框 -->
-<div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+<!-- 買賣股票模態框 -->
+<div class="modal fade" id="buySellModal" tabindex="-1" aria-labelledby="buySellModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="transactionModalLabel">交易回報</h5>
+                <h5 class="modal-title" id="buySellModalLabel">買賣股票</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- 這裡放交易回報的內容，例如表格或列表 -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">股票代號</th>
-                            <th scope="col">股價</th>
-                            <th scope="col">成交時間</th>
-                            <th scope="col">成交狀態</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- 這裡放交易回報的每一條記錄 -->
-                        <tr>
-                            <td>ABC123</td>
-                            <td>$100</td>
-                            <td>2024-06-13 10:30:00</td>
-                            <td>交易成功</td>
-                        </tr>
-                        <!-- 其他交易記錄 -->
-                    </tbody>
-                </table>
+                <form action="buystock.php" method="post">
+                    <div class="mb-3">
+                        <label for="stockCode" class="form-label">股票代號</label>
+                        <input type="text" class="form-control" id="stockCode" name="stockCode" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">股價</label>
+                        <input type="number" class="form-control" id="price" name="price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">張數</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="buy" name="action" value="buy">
+                        <label class="form-check-label" for="buy">買進</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="sell" name="action" value="sell">
+                        <label class="form-check-label" for="sell">賣出</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">確認</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+
+            <div class="col mb-5 h-100">
+                <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#transactionModal">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-journal-check"></i></div>
+                    <h2 class="fw-bolder mb-0">交易回報</h2>
+                    <p class="mb-0">查看交易記錄</p>
+                </a>
+            </div>
+            <!-- 交易回報模態框 -->
+            <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="transactionModalLabel">交易回報</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- 這裡放交易回報的內容，例如表格或列表 -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">股票代號</th>
+                                        <th scope="col">股價</th>
+                                        <th scope="col">成交時間</th>
+                                        <th scope="col">成交狀態</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 這裡放交易回報的每一條記錄 -->
+                                    <tr>
+                                        <td>ABC123</td>
+                                        <td>$100</td>
+                                        <td>2024-06-13 10:30:00</td>
+                                        <td>交易成功</td>
+                                    </tr>
+                                    <!-- 其他交易記錄 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </section>
