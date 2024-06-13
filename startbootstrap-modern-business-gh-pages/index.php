@@ -85,8 +85,8 @@
                             <div class="col mb-5 h-100">
                                 <a class="navbar-brand" href="search.php" >
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-search"></i></div>
-                                    <h2 class="fw-bolder mb-0">搜尋股票</h2>
-                                    <p class="mb-0">使用我們的系統快速找尋到您想要股票資料</p>
+                                    <h2 class="fw-bolder mb-0">搜尋公司</h2>
+                                    <p class="mb-0">使用我們的系統快速找尋到您想要公司資料</p>
                                 </a>
                             </div>
                             <div class="col mb-5 h-100">
@@ -238,9 +238,7 @@
                     <div class="col-lg-10 col-xl-7">
                         <div class="text-center">
                             <div class="fs-4 mb-4 fst-italic">"使用我們的查詢股票系統讓我在管理自己股票資產時節省大量時間！從這個系統開始，讓股票管理變得更加簡單高效！"</div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> 
-                            </div>
+    
                         </div>
                     </div>
                 </div>
@@ -251,13 +249,8 @@
     <footer class="bg-dark py-4 mt-auto">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Team12 Website 2024</div></div>
                 <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
                 </div>
             </div>
         </div>
