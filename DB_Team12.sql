@@ -1,5 +1,6 @@
 -- CREATE DATABASE IF NOT EXISTS `DB_Team12`;
 
+
 USE `team12`;
 -- DDL
 CREATE TABLE IF NOT EXISTS `User` (
@@ -44,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `Trade` (
     FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID)
 );
 
+
 CREATE TABLE IF NOT EXISTS `Quarter` (
     CompanyID VARCHAR(20),
     Quarter VARCHAR(20),
@@ -56,6 +58,18 @@ CREATE TABLE IF NOT EXISTS `Quarter` (
     FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID)
 );
 
+-- 分別欄位從其他指定table匯入
+CREATE TABLE IF NOT EXISTS `buystock` (
+    userid VARCHAR(20),
+    amount DECIMAL(15, 2) DEFAULT 1000000.00,
+    companyid VARCHAR(20),
+    price DECIMAL(15, 2),
+    transaction_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    transtype INT DEFAULT 1,
+    PRIMARY KEY (userid, companyid, transaction_time),
+    FOREIGN KEY (userid) REFERENCES User(UserID),
+    FOREIGN KEY (companyid) REFERENCES Company(CompanyID)
+);
 -- INSERT
 INSERT INTO User (UserID, UserName, Password, Email, Phone, Birth, Permission) VALUES
 ('user001','Emily Johnson','passemily','johnson@gmail.com','0974-868-375','1993/10/4',0),
