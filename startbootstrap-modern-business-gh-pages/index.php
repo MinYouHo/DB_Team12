@@ -238,7 +238,7 @@
         <p class="mb-0">買進或賣出股票</p>
     </a>
 </div>
-<!-- 買賣股票模態框 -->
+<!-- 買賣股票擬態框-->
 <div class="modal fade" id="buySellModal" tabindex="-1" aria-labelledby="buySellModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -275,14 +275,15 @@
     </div>
 </div>
 
-
+            <!-- 交易回報按鈕 -->
             <div class="col mb-5 h-100">
-                <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#transactionModal">
+                <a class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#transactionModal" id="loadTransactions">
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-journal-check"></i></div>
                     <h2 class="fw-bolder mb-0">交易回報</h2>
                     <p class="mb-0">查看交易記錄</p>
                 </a>
             </div>
+
             <!-- 交易回報模態框 -->
             <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -292,31 +293,47 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <!-- 這裡放交易回報的內容，例如表格或列表 -->
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">股票代號</th>
-                                        <th scope="col">股價</th>
-                                        <th scope="col">成交時間</th>
-                                        <th scope="col">成交狀態</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- 這裡放交易回報的每一條記錄 -->
-                                    <tr>
-                                        <td>ABC123</td>
-                                        <td>$100</td>
-                                        <td>2024-06-13 10:30:00</td>
-                                        <td>交易成功</td>
-                                    </tr>
-                                    <!-- 其他交易記錄 -->
-                                </tbody>
-                            </table>
+                            <!-- 這裡將動態加載交易記錄 -->
+                            <div id="transactionContent">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">股票代號</th>
+                                            <th scope="col">股價</th>
+                                            <th scope="col">成交時間</th>
+                                            <th scope="col">成交狀態</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 交易記錄將插入這裡 -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 加載 jQuery (確保已經包含 jQuery 庫) -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $('#loadTransactions').on('click', function() {
+                    $.ajax({
+                        url: 'stockstatus.php',
+                        type: 'GET',
+                        success: function(response) {
+                            $('#transactionContent tbody').html(response);
+                        },
+                        error: function() {
+                            alert('無法加載交易記錄');
+                        }
+                    });
+                });
+            });
+            </script>
+
+
 
 
         </section>
