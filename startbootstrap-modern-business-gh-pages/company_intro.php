@@ -37,7 +37,12 @@
                                 <p class="lead fw-normal text-white-50 mb-4">讓您更快了解公司營運狀況</p>
                             </div>
                         </div>
+                        <?php $myindustries = ['Utilities', 'Telecommunications', 'Technology', 'Real_Estate', 'Industrials', 'Healthcare','Financial_Services','Energy','Consumer_Staples','Consumer_Discretiona']; ?>
+                        <?php if (in_array($Industry, $myindustries)): ?>
                         <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/<?php echo htmlspecialchars($Industry); ?>.jpg" alt="..." /></div>
+                        <?php else: ?>
+                            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/company.jpg" alt="..." /></div>    
+                        <?php endif; ?>
                     </div>
                 </div>
             </header>
@@ -678,14 +683,7 @@
         <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
-                    </div>
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Team12 Website 2024</div></div>
                 </div>
             </div>
         </footer>
